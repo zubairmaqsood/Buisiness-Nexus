@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { TextField } from '@mui/material'
 import { InputLabel } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -11,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { registerUser } from '../../services/authService';
+import TextField from '../../components/TextField';
 import "./Register.css"
 
 function Register() {
@@ -48,9 +48,9 @@ function Register() {
     //if user is registered successfully
     else {
       setError("")
-      const {role,token} = response
-      localStorage.setItem("token",token)
-      navigate(role==="entrepreneur"?"/dashboard/entrepreneur":"/dashboard/investor")
+      const { token } = response
+      localStorage.setItem("token", token)
+      navigate("/dashboard")
     }
   };
 
@@ -74,39 +74,26 @@ function Register() {
               )
             }
 
-            {/* for name field */}
-
+            {/* for name field from TextField.jsx component*/}
             <TextField
-              {...register("name", {
-                required: { value: true, message: "name is required" }
-              })}
-
-              label="Enter Name"
-              margin='normal'
-              size='meduim'
-              fullWidth
+              register={register}
+              name='name'
+              requireMessage='name is required'
+              label='Name'
               type='text'
-              error={!!errors.name}
-              helperText={errors.name?.message}
+              errors={errors}
             />
 
 
-            {/* for email field */}
+            {/* for email field from TextField.jsx component*/}
             <TextField
-              {...register("email", {
-                required: { value: true, message: "Email is required" }, pattern: {
-                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                  message: "Invalid email address"
-                }
-              })}
-
-              label="Enter Email"
-              margin='normal'
-              size='meduim'
-              fullWidth
+              register={register}
+              name='email'
+              requireMessage='Email is required'
+              label='Email'
               type='email'
-              error={!!errors.email}
-              helperText={errors.email?.message}
+              patternValue='/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/' patternErrorMsg='Invalid email address'
+              errors={errors}
             />
 
             {/* for password field */}

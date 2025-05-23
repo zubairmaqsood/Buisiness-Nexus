@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import userModel from "../models/userModel";
+import userModel from "../models/userModel.js";
 
  const isLoggedIn = async(req,res,next) => {
     const headerValue = req.header("Authorization")

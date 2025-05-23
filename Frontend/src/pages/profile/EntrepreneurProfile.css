@@ -1,0 +1,63 @@
+.entrepreneur-profile {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.entrepreneur-profile h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.profile-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e88e5;
+  margin: 0;
+}
+
+.profile-card p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+.pitch-deck-placeholder {
+  border: 2px dashed #ccc;
+  padding: 16px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.pitch-deck-placeholder span {
+  color: #666;
+  font-size: 16px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  padding: 40px;
+}
+
+.error {
+  text-align: center;
+  font-size: 18px;
+  color: #d32f2f;
+  padding: 40px;
+}

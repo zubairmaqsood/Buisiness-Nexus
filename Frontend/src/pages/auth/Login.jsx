@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { TextField } from '@mui/material'
+import  { useState } from 'react'
 import { InputLabel } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -11,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { loginUser } from '../../services/authService';
+import TextField from '../../components/TextField';
 import './Login.css'
 
 
@@ -33,7 +33,6 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors, isSubmitting },
   } = useForm()
 
@@ -49,9 +48,9 @@ export default function Login() {
     //if user is loggedin successfully
     else {
       setError("")
-      const { role, token } = response
+      const { token } = response
       localStorage.setItem("token", token)
-      navigate(role === "entrepreneur" ? "/dashboard/entrepreneur" : "/dashboard/investor")
+      navigate("/dashboard")
     }
   };
 
@@ -75,22 +74,16 @@ export default function Login() {
               )
             }
 
-            {/* for email field */}
-            <TextField
-              {...register("email", {
-                required: { value: true, message: "Email is required" }, pattern: {
-                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                  message: "Invalid email address"
-                }
-              })}
+            {/* for email field from TextField.jsx component*/}
 
-              label="Enter Email"
-              margin='normal'
-              size='meduim'
-              fullWidth
+            <TextField
+              register={register}
+              name='email'
+              requireMessage='Email is required'
+              label='Email'
               type='email'
-              error={!!errors.email}
-              helperText={errors.email?.message}
+              patternValue='/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/' patternErrorMsg='Invalid email address'
+              errors={errors}
             />
 
             {/* for password field */}

@@ -1,42 +1,40 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+
+import { NavLink } from 'react-router-dom';
 import logo from "../assets/logo.png"
 import './Sidebar.css';
 
-function Sidebar() {
-  const navigate = useNavigate();
-
+function Sidebar({id, role }) {
 
   return (
     <div className="sidebar">
-        <div className="logoContainer">
+      <div className="logoContainer">
 
         <div className='imgContainer'>
           <img className='img' src={logo} alt="logo" />
         </div>
-        
+
       </div>
 
       <ul>
         <li>
-          <NavLink to="" >
+          <NavLink  to={`/dashboard/${role}`} >
             Dashboard
           </NavLink>
         </li>
         <li>
-          <NavLink to="">
+          <NavLink to={`/dashboard/${role}/request`}>
             Requests
           </NavLink>
         </li>
         <li>
-          <NavLink to="" >
+          <NavLink to={`/dashboard/${role}/profile/:${id}`} >
             Profile
           </NavLink>
         </li>
         <li>
-          <button  className="logout-button">
+          <NavLink className="logout-button" to="/logout">
             Logout
-          </button>
+          </NavLink>
         </li>
       </ul>
     </div>

@@ -1,4 +1,4 @@
-.container {
+.navbar {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: flex-end;
@@ -37,9 +37,4 @@
     font-weight: 900;
     font-size: 24px;
     color: #4098CF;
-}
-
-.icons {
-    display: flex;
-    column-gap: 15px;
 }

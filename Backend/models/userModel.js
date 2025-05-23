@@ -1,6 +1,6 @@
-import mongoose from "mongoose"
+import {Schema,model} from "mongoose";
 
-const userSchema = mongoose.Schema({
+const userSchema = Schema({
     name: {
         type: String,
     },
@@ -18,9 +18,20 @@ const userSchema = mongoose.Schema({
         type: String,
         enum: ['entrepreneur', 'investor'],
         required: true
-    }
+    },
+    bio: String,
+    startupDescription:{
+         type:String,
+         require:function(){
+            this.role==="entrepreneur"
+         }
+        },
+  fundingNeed: Number, // Entrepreneur
+  pitchDeck: String, // Entrepreneur
+  investmentInterests: [String], // Investor
+  portfolioCompanies: [{ name: String, description: String }], // Investor
 },{
     timestamps: true
 })
 
-export default mongoose.model('user', userSchema)
+export default model('user', userSchema)

@@ -1,0 +1,9 @@
+.outlet{
+    position: fixed;
+    top: 9%;
+    left: 13%;
+    width: 86%;
+    height: 90%;
+    overflow: auto;
+    padding: 9px 11px;
+}

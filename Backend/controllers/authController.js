@@ -13,8 +13,8 @@ export const loginUser = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) return res.status(400).send({ message: "Incorrect email or password" })
 
-        const token = generateToken(user.email, user._id)
-        res.status(200).send({ role: user.role, token })
+        const token = generateToken(user.email, user._id,user.role)
+        res.status(200).send({ token })
     } catch (error) {
         res.status(500).send({ message: error.message })
     }
@@ -29,8 +29,8 @@ export const registerUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 12)
         const createdUser = await userModel.create({ name, email, password: hashedPassword, role })
-        const token = generateToken(createdUser.email, createdUser._id)
-        res.status(201).send({ role: createdUser.role, token })
+        const token = generateToken(createdUser.email, createdUser._id,createdUser.role)
+        res.status(201).send({token })
     } catch (error) {
         res.status(500).send({ message: error.message })
     }

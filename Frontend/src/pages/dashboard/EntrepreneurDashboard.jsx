@@ -1,10 +1,18 @@
-import React from 'react'
+import Card from "../../components/Card"
+import "./Dashboard.css"
+import { Outlet, useMatch } from "react-router"
 
 function EntrepreneurDashboard() {
+
+  const match = useMatch("/dashboard/entrepreneur")
+
   return (
-    <>
-      noise
-    </>
+    <div className="entrepreneurContainer">
+      {match&&(
+        <Card/>
+      )}
+      <Outlet/>
+    </div>
   )
 }
 
